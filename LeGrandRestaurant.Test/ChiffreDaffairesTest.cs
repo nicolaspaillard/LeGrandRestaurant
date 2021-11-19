@@ -92,12 +92,21 @@ namespace LeGrandRestaurant.Test
 		//	CAS(Y = 1.0)
 
 		//SCOPE Franchise
-		//	ÉTANT DONNÉ une franchise ayant X restaurants de Y serveurs chacuns
-		//	QUAND tous les serveurs prennent une commande d'un montant Z
-		//	ALORS le chiffre d'affaires de la franchise est X * Y * Z
-		//	CAS(X = 0; X = 1; X = 2; X = 1000)
-		//	CAS(Y = 0; Y = 1; Y = 2; Y = 1000)
-		//	CAS(Z = 1.0)
+		public void LaFranchise()
+        {
+			//	ÉTANT DONNÉ une franchise ayant X restaurants de Y serveurs chacuns
+			Franchise LaFranchise = new Franchise();
+            for (int i = 0; i < 4; i++)
+            {
 
+            }
+
+
+			//	QUAND tous les serveurs prennent une commande d'un montant Z
+			//	ALORS le chiffre d'affaires de la franchise est X * Y * Z
+			//	CAS(X = 0; X = 1; X = 2; X = 1000)
+			//	CAS(Y = 0; Y = 1; Y = 2; Y = 1000)
+			//	CAS(Z = 1.0)
+		}
 	}
 }
