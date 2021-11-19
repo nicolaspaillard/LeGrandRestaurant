@@ -57,29 +57,14 @@ namespace LeGrandRestaurant.Test
             // ALORS une exception est lancée
             Assert.Throws<InvalidOperationException>(Act);
         }
-        [Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs QUAND tous les serveurs prennent une commande dun montant Y ALORS le chiffre d'affaires de la franchise est X * Y")]
+        
 
 
 
 
 
 
-        public void CAServeurFranchise()
-        {
-            // ÉTANT DONNÉ un restaurant ayant X serveurs
-            Serveur serveur = new Serveur();
-            List <Serveur> lesServeurs = new();
-            for (int i = 0; i < 3; i++)
-            {
-                lesServeurs.Add(serveur);
-            }
-
-            // QUAND tous les serveurs prennent une commande dun montant Y
-            void Act() => table.InstallerClient();
-
-            // ALORS le chiffre d'affaires de la franchise est X * Y
-            Assert.Throws<InvalidOperationException>(Act);
-        }
+        
 
         //ÉTANT DONNE une table dans un restaurant ayant débuté son service
         //QUAND un client est affecté à une table
