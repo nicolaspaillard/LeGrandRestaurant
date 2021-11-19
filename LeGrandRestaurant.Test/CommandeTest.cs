@@ -10,8 +10,8 @@ namespace LeGrandRestaurant.Test
     public class CommandeTest
     {
 		[Fact(DisplayName = "ÉTANT DONNE un serveur dans un restaurant " +
-					"QUAND il prend une commande de nourriture " +
-					"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
+							"QUAND il prend une commande de nourriture " +
+							"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
 		public void CommandeNourriture()
 		{
 			//ÉTANT DONNE un serveur dans un restaurant
@@ -28,8 +28,8 @@ namespace LeGrandRestaurant.Test
 		}
 
 		[Fact(DisplayName = "ÉTANT DONNE un serveur dans un restaurant " +
-			"QUAND il prend une commande de boissons " +
-			"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
+							"QUAND il prend une commande de boissons " +
+							"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
 		public void CommandeBoisson()
 		{
 			//ÉTANT DONNE un serveur dans un restaurant
