@@ -37,7 +37,7 @@ namespace LeGrandRestaurant.Test
 			// QUAND tous les serveurs prennent une commande dun montant Y
 			foreach (Serveur s in lesServeurs)
 			{
-				s.PrendCommande(
+				s.Prends(
 					new Commande()
 					);
 			}
