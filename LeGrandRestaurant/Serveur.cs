@@ -16,6 +16,7 @@ namespace LeGrandRestaurant
         public void PrendCommande(Commande commande, Restaurant restaurant)
         {
             this.commandes.Add(commande);
+            this.chiffreDaffaire += commande.Montant;
             if (commande.IsNourriture)
             {
                 restaurant.AjouteCommande(commande);

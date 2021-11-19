@@ -12,7 +12,7 @@ namespace LeGrandRestaurant.Test
 		[Fact(DisplayName = "ÉTANT DONNÉ un nouveau serveur " +
 							"QUAND on récupére son chiffre d'affaires " +
 							"ALORS celui-ci est à 0")]
-		public void RecuperationChiffreDaffaires()
+		public void RecuperationChiffreNouveauServeur()
 		{
 			//ÉTANT DONNÉ un nouveau serveur
 			Serveur serveur = new Serveur();
@@ -24,9 +24,21 @@ namespace LeGrandRestaurant.Test
 			Assert.Equal(0, chiffreDaffaires);
 		}
 
-		//	ÉTANT DONNÉ un nouveau serveur
-		//	QUAND il prend une commande
-		//	ALORS son chiffre d'affaires est le montant de celle-ci
+		[Fact(DisplayName = "ÉTANT DONNÉ un nouveau serveur " +
+					"QUAND il prend une commande " +
+					"ALORS son chiffre d'affaires est le montant de celle-ci")]
+		public void MiseAJourChiffreDaffaires()
+		{
+			//ÉTANT DONNÉ un nouveau serveur
+			Serveur serveur = new Serveur();
+
+			//QUAND il prend une commande
+			Commande commande = new Commande(20, true);
+			serveur.PrendCommande(commande, new Restaurant());
+
+			//ALORS son chiffre d'affaires est le montant de celle-ci
+			Assert.Equal(commande.Montant, serveur.chiffreDaffaire);
+		}
 
 		//	ÉTANT DONNÉ un serveur ayant déjà pris une commande
 		//	QUAND il prend une nouvelle commande
