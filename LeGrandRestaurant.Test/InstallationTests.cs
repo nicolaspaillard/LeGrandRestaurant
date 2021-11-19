@@ -80,5 +80,13 @@ namespace LeGrandRestaurant.Test
             // ALORS le chiffre d'affaires de la franchise est X * Y
             Assert.Throws<InvalidOperationException>(Act);
         }
+
+        //ÉTANT DONNE une table dans un restaurant ayant débuté son service
+        //QUAND un client est affecté à une table
+        //ALORS cette table n'est plus sur la liste des tables libres du restaurant
+
+	    //ÉTANT DONNE une table occupée par un client
+        //QUAND la table est libérée
+        //ALORS cette table appraît sur la liste des tables libres du restaurant
     }
 }
