@@ -94,15 +94,23 @@ namespace LeGrandRestaurant.Test
 		//SCOPE Franchise
 		public void LaFranchise()
         {
-			//	ÉTANT DONNÉ une franchise ayant X restaurants de Y serveurs chacuns
+			//	ÉTANT DONNÉ une franchise ayant 3 restaurants de 5 serveurs chacuns
 			Franchise LaFranchise = new Franchise();
             for (int i = 0; i < 4; i++)
             {
-
+				Restaurant leRestaurant = new Restaurant();
+                for (int i = 0; i < 5; i++)
+                {
+					leRestaurant.AjouterServeur(new Serveur());
+                }
+				LaFranchise.AjouterRestaurant(leRestaurant);
             }
-
-
 			//	QUAND tous les serveurs prennent une commande d'un montant Z
+
+			Commande laCommande = new Commande(10, false);
+			
+
+
 			//	ALORS le chiffre d'affaires de la franchise est X * Y * Z
 			//	CAS(X = 0; X = 1; X = 2; X = 1000)
 			//	CAS(Y = 0; Y = 1; Y = 2; Y = 1000)
