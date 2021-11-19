@@ -108,11 +108,57 @@ namespace LeGrandRestaurant.Test
 														franchise.restaurants.First().serveurs.First().commandes.First().Montant);
 		}
 
+		[Fact(DisplayName = "ÉTANT DONNÉ une franchise ayant 3 restaurants de 5 serveurs chacuns " +
+	"QUAND tous les serveurs prennent une commande d'un montant 10 " +
+	"ALORS le chiffre d'affaires de la franchise est X * Y * Z")]
+		public void MiseAJourChiffreFranchiseTousRestaurants()
+		{
+			//	ÉTANT DONNÉ une franchise ayant 3 restaurants de 5 serveurs chacuns
+			Franchise franchise = new Franchise();
+			for (int i = 0; i < 4; i++)
+			{
+				Restaurant leRestaurant = new Restaurant();
+				for (int j = 0; j < 5; j++)
+				{
+					leRestaurant.AjouteServeur(new Serveur());
+				}
+				franchise.AjouteRestaurant(leRestaurant);
+			}
+
+			//	QUAND tous les serveurs prennent une commande d'un montant 10
+			Commande commande = new Commande(10, true);
+			franchise.restaurants.ForEach(restaurant => restaurant.serveurs.ForEach(s => s.PrendCommande(commande, restaurant, franchise)));
+
+			//	ALORS le chiffre d'affaires de la franchise est X * Y * Z
+			Assert.Equal(franchise.chiffreDaffaires, franchise.restaurants.Count *
+														franchise.restaurants.First().serveurs.Count *
+														franchise.restaurants.First().serveurs.First().commandes.First().Montant);
+		}
 		//SCOPE Restaurant
 		//	ÉTANT DONNÉ un restaurant ayant X serveurs
 		//	QUAND tous les serveurs prennent une commande d'un montant Y
 		//	ALORS le chiffre d'affaires de la franchise est X * Y
 		//	CAS(X = 0; X = 1; X = 2; X = 100)
 		//	CAS(Y = 1.0)
+		[Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs " +
+							"QUAND tous les serveurs prennent une commande d'un montant Y " +
+							"ALORS le chiffre d'affaires de la franchise est X * Y")]
+		public void MiseAJourChiffreFranchiseRestaurant()
+		{
+			//	ÉTANT DONNÉ un restaurant ayant 5 serveurs
+			Restaurant leRestaurant = new Restaurant();
+			for (int j = 0; j < 5; j++)
+			{
+				leRestaurant.AjouteServeur(new Serveur());
+			}
+
+			//	QUAND tous les serveurs prennent une commande d'un montant 10
+			Commande commande = new Commande(10, true);
+			Franchise franchise = new Franchise();
+			leRestaurant.serveurs.ForEach(s => s.PrendCommande(commande, leRestaurant, franchise));
+
+			//	ALORS le chiffre d'affaires de la franchise est X * Y
+			Assert.Equal(franchise.chiffreDaffaires, leRestaurant.serveurs.Count * commande.Montant);
+		}
 	}
 }
