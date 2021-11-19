@@ -14,5 +14,9 @@ namespace LeGrandRestaurant
         {
             this.chiffreDaffaires += commande.Montant;
         }
+        public void AjouteRestaurant(Restaurant restaurant)
+        {
+            this.restaurants.Add(restaurant);
+        }
     }
 }

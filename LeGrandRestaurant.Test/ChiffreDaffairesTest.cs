@@ -23,7 +23,10 @@ namespace LeGrandRestaurant.Test
 			//ALORS celui-ci est à 0
 			Assert.Equal(0, chiffreDaffaires);
 		}
-		[Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs QUAND tous les serveurs prennent une commande dun montant Y ALORS le chiffre d'affaires de la franchise est X * Y")]
+
+		[Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs " +
+							"QUAND tous les serveurs prennent une commande dun montant Y " +
+							"ALORS le chiffre d'affaires de la franchise est X * Y")]
 		public void CAServeurFranchise()
 		{
 			// ÉTANT DONNÉ un restaurant ayant X serveurs
@@ -47,8 +50,8 @@ namespace LeGrandRestaurant.Test
 		}
 
 		[Fact(DisplayName = "ÉTANT DONNÉ un nouveau serveur " +
-					"QUAND il prend une commande " +
-					"ALORS son chiffre d'affaires est le montant de celle-ci")]
+							"QUAND il prend une commande " +
+							"ALORS son chiffre d'affaires est le montant de celle-ci")]
 		public void CreationChiffreNouveauServeur()
 		{
 			//ÉTANT DONNÉ un nouveau serveur
