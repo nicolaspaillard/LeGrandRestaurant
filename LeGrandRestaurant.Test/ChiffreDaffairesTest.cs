@@ -23,7 +23,23 @@ namespace LeGrandRestaurant.Test
 			//ALORS celui-ci est à 0
 			Assert.Equal(0, chiffreDaffaires);
 		}
+		[Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs QUAND tous les serveurs prennent une commande dun montant Y ALORS le chiffre d'affaires de la franchise est X * Y")]
+		public void CAServeurFranchise()
+		{
+			int CA = 0;
+			// ÉTANT DONNÉ un restaurant ayant X serveurs
+			List<Serveur> lesServeurs = new List<Serveur>();
 
+
+
+			// QUAND tous les serveurs prennent une commande dun montant Y
+			foreach (var serveurCA )
+				RecuperationChiffreDaffaires(serveurCA);
+			CA = serveurCA + serveurCA;
+
+			// ALORS le chiffre d'affaires de la franchise est X * Y
+			Assert.N
+		}
 		//	ÉTANT DONNÉ un nouveau serveur
 		//	QUAND il prend une commande
 		//	ALORS son chiffre d'affaires est le montant de celle-ci
