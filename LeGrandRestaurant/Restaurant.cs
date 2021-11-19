@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LeGrandRestaurant
 {
@@ -6,6 +7,8 @@ namespace LeGrandRestaurant
     {
         public List<Commande> commandes { get; set; } = new List<Commande>();
         public List<Serveur> serveurs { get; set; } = new List<Serveur>();
+        public MaitreHotel maitreHotel { get; set; } = new MaitreHotel();
+        public List<Table> tables { get; set; } = new List<Table>();
         public Restaurant(Table table)
         {
         }
@@ -14,7 +17,10 @@ namespace LeGrandRestaurant
         }
         public void DébuterService()
         {
+            this.maitreHotel.tables = this.tables;
+            this.tables = new List<Table>();
         }
+
 
         public bool LaTableEstLibre(Table table)
             => !table.EstOccupée;
@@ -27,9 +33,13 @@ namespace LeGrandRestaurant
             franchise.AjouteCommande(commande);
             this.commandes.Add(commande);
         }
-        public void AfficheCommandes()
+        public void AjouteTable(Table table)
         {
-            this.commandes.ForEach(commande => System.Console.WriteLine(commande));
+            this.tables.Add(table);
+        }
+        public void AjouteTables(List<Table> tables)
+        {
+            this.tables.AddRange(tables);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace LeGrandRestaurant
     {
         public float chiffreDaffaire { get; set; } = 0;
         public List<Commande> commandes { get; set; } = new List<Commande>();
+        public List<Table> tables { get; set; } = new List<Table>();
         public Serveur() { }
            
         public void PrendCommande(Commande commande, Restaurant restaurant, Franchise franchise)
@@ -24,6 +25,10 @@ namespace LeGrandRestaurant
             {
                 //bar ?
             }
+        }
+        public void AjouterTable(Table table)
+        {
+            this.tables.Add(table);
         }
     }
 }
