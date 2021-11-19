@@ -26,7 +26,6 @@ namespace LeGrandRestaurant.Test
 		[Fact(DisplayName = "ÉTANT DONNÉ un restaurant ayant X serveurs QUAND tous les serveurs prennent une commande dun montant Y ALORS le chiffre d'affaires de la franchise est X * Y")]
 		public void CAServeurFranchise()
 		{
-			int CA = 0;
 			// ÉTANT DONNÉ un restaurant ayant X serveurs
 			List<Serveur> lesServeurs = new List<Serveur>();
             for (int i = 0; i < 20; i++)
@@ -35,15 +34,16 @@ namespace LeGrandRestaurant.Test
             }
 
 			// QUAND tous les serveurs prennent une commande dun montant Y
+			int montant = 20;
+			Commande commande = new Commande(montant, true);
+			Franchise franchise = new Franchise();
 			foreach (Serveur s in lesServeurs)
-			{
-				s.Prends(
-					new Commande()
-					);
+			{			
+				s.PrendCommande(commande, new Restaurant(), franchise);
 			}
 
 			// ALORS le chiffre d'affaires de la franchise est X * Y
-			Assert.N
+			Assert.Equal(lesServeurs.Count * montant, franchise.chiffreDaffaires);
 		}
 
 		[Fact(DisplayName = "ÉTANT DONNÉ un nouveau serveur " +
@@ -56,7 +56,7 @@ namespace LeGrandRestaurant.Test
 
 			//QUAND il prend une commande
 			Commande commande = new Commande(20, true);
-			serveur.PrendCommande(commande, new Restaurant());
+			serveur.PrendCommande(commande, new Restaurant(), new Franchise());
 
 			//ALORS son chiffre d'affaires est le montant de celle-ci
 			Assert.Equal(commande.Montant, serveur.chiffreDaffaire);
@@ -75,7 +75,7 @@ namespace LeGrandRestaurant.Test
 
 			//QUAND il prend une nouvelle commande
 			Commande commande = new Commande(20, true);
-			serveur.PrendCommande(commande, new Restaurant());
+			serveur.PrendCommande(commande, new Restaurant(), new Franchise());
 
 			//ALORS son chiffre d'affaires est la somme des deux commandes
 			Assert.Equal(commande.Montant, serveur.chiffreDaffaire);

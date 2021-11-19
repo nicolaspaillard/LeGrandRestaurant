@@ -1,4 +1,6 @@
-﻿namespace LeGrandRestaurant
+﻿using System;
+
+namespace LeGrandRestaurant
 {
     public class Table
     {

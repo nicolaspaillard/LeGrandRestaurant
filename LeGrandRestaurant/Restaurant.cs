@@ -22,8 +22,9 @@ namespace LeGrandRestaurant
         {
             this.serveurs.Add(serveur);
         }
-        public void AjouteCommande(Commande commande)
+        public void AjouteCommande(Commande commande, Franchise franchise)
         {
+            franchise.AjouteCommande(commande);
             this.commandes.Add(commande);
         }
         public void AfficheCommandes()

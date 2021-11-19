@@ -8,18 +8,17 @@ namespace LeGrandRestaurant
 {
     public class Serveur
     {
-        private int montant = 0;
         public float chiffreDaffaire { get; set; } = 0;
         public List<Commande> commandes { get; set; } = new List<Commande>();
         public Serveur() { }
            
-        public void PrendCommande(Commande commande, Restaurant restaurant)
+        public void PrendCommande(Commande commande, Restaurant restaurant, Franchise franchise)
         {
             this.commandes.Add(commande);
             this.chiffreDaffaire += commande.Montant;
             if (commande.IsNourriture)
             {
-                restaurant.AjouteCommande(commande);
+                restaurant.AjouteCommande(commande, franchise);
             }
             else
             {
