@@ -87,7 +87,7 @@ namespace LeGrandRestaurant.Test
 		public void MiseAJourChiffreFranchise()
         {
 			//	ÉTANT DONNÉ une franchise ayant 3 restaurants de 5 serveurs chacuns
-			Franchise LaFranchise = new Franchise();
+			Franchise franchise = new Franchise();
             for (int i = 0; i < 4; i++)
             {
 				Restaurant leRestaurant = new Restaurant();
@@ -95,17 +95,17 @@ namespace LeGrandRestaurant.Test
                 {
 					leRestaurant.AjouteServeur(new Serveur());
                 }
-				LaFranchise.AjouteRestaurant(leRestaurant);
+				franchise.AjouteRestaurant(leRestaurant);
             }
-			//	QUAND tous les serveurs prennent une commande d'un montant 10
 
-			Commande laCommande = new Commande(10, false);
-			LaFranchise.restaurants.ForEach(r => r.serveurs.ForEach(s => s.PrendCommande(laCommande, new Restaurant(), LaFranchise)));
+			//	QUAND tous les serveurs prennent une commande d'un montant 10
+			Commande commande = new Commande(10, true);
+			franchise.restaurants.ForEach(restaurant => restaurant.serveurs.ForEach(s => s.PrendCommande(commande, restaurant, franchise)));
 
 			//	ALORS le chiffre d'affaires de la franchise est X * Y * Z
-			Assert.Equal(LaFranchise.chiffreDaffaires,	LaFranchise.restaurants.Count * 
-														LaFranchise.restaurants.First().serveurs.Count * 
-														LaFranchise.restaurants.First().serveurs.First().commandes.First().Montant);
+			Assert.Equal(franchise.chiffreDaffaires,	franchise.restaurants.Count * 
+														franchise.restaurants.First().serveurs.Count * 
+														franchise.restaurants.First().serveurs.First().commandes.First().Montant);
 		}
 
 		//SCOPE Restaurant
