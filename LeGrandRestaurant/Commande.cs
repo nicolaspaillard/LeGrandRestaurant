@@ -8,8 +8,8 @@ namespace LeGrandRestaurant
 {
     public class Commande
     {
-        public float Montant { get; set; }
-        public bool IsNourriture { get; set; }
+        public float Montant { get; } = 0;
+        public bool IsNourriture { get; } = false;
 
         public Commande(float montant, bool isNourriture)
         {

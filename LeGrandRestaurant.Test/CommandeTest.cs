@@ -21,7 +21,7 @@ namespace LeGrandRestaurant.Test
 
 			//QUAND il prend une commande de nourriture
 			Commande commande = new Commande(20, true);
-			serveur.PrendCommande(commande, restaurant);
+			serveur.PrendCommande(commande, restaurant, new Franchise());
 
 			//ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant
 			Assert.Contains<Commande>(commande, restaurant.commandes);
@@ -39,7 +39,7 @@ namespace LeGrandRestaurant.Test
 
 			//QUAND il prend une commande de boissons
 			Commande commande = new Commande(20, false);
-			serveur.PrendCommande(commande, restaurant);
+			serveur.PrendCommande(commande, restaurant, new Franchise());
 
 			//ALORS cette commande n'apparaît pas dans la liste de tâches de la cuisine de ce restaurant
 			Assert.DoesNotContain<Commande>(commande, restaurant.commandes);
