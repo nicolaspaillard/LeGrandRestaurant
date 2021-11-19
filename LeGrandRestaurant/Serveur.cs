@@ -8,10 +8,10 @@ namespace LeGrandRestaurant
 {
     public class Serveur
     {
-        public Serveur()
-        {
-            int montant = 0;
+        private int montant = 0;
+        public float chiffreDaffaire { get; set; } = 0;
+        public Serveur() { }
+           
 
-        }
     }
 }
