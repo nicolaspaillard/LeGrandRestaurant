@@ -30,7 +30,7 @@ namespace LeGrandRestaurant.Test
         {
             // ÉTANT DONNE une table occupée par un client
             var table = new Table();
-            var restaurant = new Restaurant(table);
+            var restaurant = new Restaurant();
 
             restaurant.DébuterService();
             table.InstallerClient();
