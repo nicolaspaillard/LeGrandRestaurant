@@ -10,8 +10,12 @@ namespace LeGrandRestaurant
     {
         private int montant = 0;
         public float chiffreDaffaire { get; set; } = 0;
+        public List<Commande> commandes { get; set; } = new List<Commande>();
         public Serveur() { }
            
-
+        public void PrendCommande(Commande commande)
+        {
+            this.commandes.Add(commande);
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeGrandRestaurant
 {
-    internal class Commande
+    public class Commande
     {
         public float Montant { get; set; }
         public bool IsNourriture { get; set; }
