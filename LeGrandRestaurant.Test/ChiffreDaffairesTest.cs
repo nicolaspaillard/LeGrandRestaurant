@@ -29,8 +29,22 @@ namespace LeGrandRestaurant.Test
 			int CA = 0;
 			// ÉTANT DONNÉ un restaurant ayant X serveurs
 			List<Serveur> lesServeurs = new List<Serveur>();
+            for (int i = 0; i < 20; i++)
+            {
+				lesServeurs.Add(new Serveur());
+            }
 
+			// QUAND tous les serveurs prennent une commande dun montant Y
+			foreach (Serveur s in lesServeurs)
+			{
+				s.PrendCommande(
+					new Commande()
+					);
+			}
 
+			// ALORS le chiffre d'affaires de la franchise est X * Y
+			Assert.N
+		}
 
 		[Fact(DisplayName = "ÉTANT DONNÉ un nouveau serveur " +
 					"QUAND il prend une commande " +
@@ -46,14 +60,6 @@ namespace LeGrandRestaurant.Test
 
 			//ALORS son chiffre d'affaires est le montant de celle-ci
 			Assert.Equal(commande.Montant, serveur.chiffreDaffaire);
-		}
-			// QUAND tous les serveurs prennent une commande dun montant Y
-			foreach (var serveurCA )
-				RecuperationChiffreDaffaires(serveurCA);
-			CA = serveurCA + serveurCA;
-
-			// ALORS le chiffre d'affaires de la franchise est X * Y
-			Assert.N
 		}
 		//	ÉTANT DONNÉ un nouveau serveur
 		//	QUAND il prend une commande
