@@ -7,28 +7,42 @@ using Xunit;
 
 namespace LeGrandRestaurant.Test
 {
-    internal class CommandeTest
+    public class CommandeTest
     {
 		[Fact(DisplayName = "ÉTANT DONNE un serveur dans un restaurant " +
 					"QUAND il prend une commande de nourriture " +
 					"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
-		public void RecuperationChiffreDaffaires()
+		public void CommandeNourriture()
 		{
 			//ÉTANT DONNE un serveur dans un restaurant
 			Serveur serveur = new Serveur();
+			Restaurant restaurant = new Restaurant();
+			restaurant.AjouteServeur(serveur);
 
 			//QUAND il prend une commande de nourriture
-			serveur.PrendCommande(new Commande());
+			Commande commande = new Commande(20, true);
+			serveur.PrendCommande(commande, restaurant);
 
 			//ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant
-			Assert.Equal(0, chiffreDaffaires);
+			Assert.Contains<Commande>(commande, restaurant.commandes);
 		}
-		//
-		//
-		//
 
-		//ÉTANT DONNE un serveur dans un restaurant
-		//QUAND il prend une commande de boissons
-		//ALORS cette commande n'apparaît pas dans la liste de tâches de la cuisine de ce restaurant
+		[Fact(DisplayName = "ÉTANT DONNE un serveur dans un restaurant " +
+			"QUAND il prend une commande de boissons " +
+			"ALORS cette commande apparaît dans la liste de tâches de la cuisine de ce restaurant")]
+		public void CommandeBoisson()
+		{
+			//ÉTANT DONNE un serveur dans un restaurant
+			Serveur serveur = new Serveur();
+			Restaurant restaurant = new Restaurant();
+			restaurant.AjouteServeur(serveur);
+
+			//QUAND il prend une commande de boissons
+			Commande commande = new Commande(20, false);
+			serveur.PrendCommande(commande, restaurant);
+
+			//ALORS cette commande n'apparaît pas dans la liste de tâches de la cuisine de ce restaurant
+			Assert.DoesNotContain<Commande>(commande, restaurant.commandes);
+		}
 	}
 }

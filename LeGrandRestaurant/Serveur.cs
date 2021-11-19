@@ -13,9 +13,18 @@ namespace LeGrandRestaurant
         public List<Commande> commandes { get; set; } = new List<Commande>();
         public Serveur() { }
            
-        public void PrendCommande(Commande commande)
+        public void PrendCommande(Commande commande, Restaurant restaurant)
         {
             this.commandes.Add(commande);
+            this.chiffreDaffaire += commande.Montant;
+            if (commande.IsNourriture)
+            {
+                restaurant.AjouteCommande(commande);
+            }
+            else
+            {
+                //bar ?
+            }
         }
     }
 }
