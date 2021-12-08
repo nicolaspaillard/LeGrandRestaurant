@@ -26,7 +26,7 @@ namespace LeGrandRestaurant
                 //bar ?
             }
         }
-        public void AjouterTable(Table table)
+        public void AjouterTables(Table table)
         {
             this.tables.Add(table);
         }
@@ -34,6 +34,18 @@ namespace LeGrandRestaurant
         public void AjouterTable(List<Table> tables)
         {
             this.tables.AddRange(tables);
+        }
+        public Table RetirerTable(Table table)
+        {
+            Table t = this.tables[this.tables.IndexOf(table)];
+            this.tables.Remove(t);
+            return t;
+        }
+        public  List<Table> RetirerTables()
+        {
+            List<Table> tables = new List<Table>(this.tables);
+            this.tables = new();
+            return tables;
         }
     }
 }

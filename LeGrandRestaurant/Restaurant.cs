@@ -9,6 +9,8 @@ namespace LeGrandRestaurant
         public List<Serveur> serveurs { get; set; } = new List<Serveur>();
         public MaitreHotel maitreHotel { get; set; } = new MaitreHotel();
         public List<Table> tables { get; set; } = new List<Table>();
+        private bool serviceDébuté = false;
+        //ALORS la table éditée est affectée au serveur et les deux autres au maître d'hôtel
         public Restaurant(Table table)
         {
         }
@@ -18,8 +20,13 @@ namespace LeGrandRestaurant
         public void DébuterService()
         {
             this.maitreHotel.tables = this.tables;
+            serviceDébuté = true;
         }
-
+        public void TerminerService()
+        {
+            //this.tables = this.maitreHotel.RetirerTables();
+            serviceDébuté = false;
+        }
 
         public bool LaTableEstLibre(Table table)
             => !table.EstOccupée;
@@ -32,13 +39,39 @@ namespace LeGrandRestaurant
             franchise.AjouteCommande(commande);
             this.commandes.Add(commande);
         }
-        public void AjouteTable(Table table)
+        public void AjouteTables(Table table, Serveur serveur = null)
         {
-            this.tables.Add(table);
+            if (serveur == null)
+            {
+                this.tables.Add(table);
+            }
+            else
+            {
+                serveur.AjouterTables(table);
+            }
         }
-        public void AjouteTable(List<Table> tables)
+        public void AjouteTables(List<Table> tables, Serveur serveur = null)
         {
-            this.tables.AddRange(tables);
+            if(serveur == null)
+            {
+                this.tables.AddRange(tables);
+            }
+            else
+            {
+                serveur.AjouterTable(tables);
+            }   
+        }
+        public bool RetirerTableServeur(Table table, Serveur serveur)
+        {
+            if (!serviceDébuté)
+            {
+                this.tables.Add(serveur.RetirerTable(table));
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

@@ -68,7 +68,7 @@ namespace LeGrandRestaurant.Test
             //ÉTANT DONNE une table dans un restaurant ayant débuté son service
             Table table = new Table();
             Restaurant leRestaurant = new Restaurant();
-            leRestaurant.AjouteTable(table); 
+            leRestaurant.AjouteTables(table); 
             leRestaurant.DébuterService();
 
             //QUAND un client est affecté à une table
@@ -86,7 +86,7 @@ namespace LeGrandRestaurant.Test
             //ÉTANT DONNE une table occupée par un client
             Table table = new Table();
             Restaurant restaurant = new Restaurant();
-            restaurant.AjouteTable(table);
+            restaurant.AjouteTables(table);
             table.InstallerClient();
 
             //QUAND la table est libérée
