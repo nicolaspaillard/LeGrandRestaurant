@@ -36,7 +36,7 @@ namespace LeGrandRestaurant
         {
             this.tables.Add(table);
         }
-        public void AjouteTables(List<Table> tables)
+        public void AjouteTable(List<Table> tables)
         {
             this.tables.AddRange(tables);
         }
