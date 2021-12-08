@@ -4,7 +4,7 @@ namespace LeGrandRestaurant
 {
     public class Table
     {
-        internal bool EstOccupée { get; private set; }
+        public bool EstOccupée { get; private set; }
 
         public void InstallerClient()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace LeGrandRestaurant.Test
@@ -57,20 +58,34 @@ namespace LeGrandRestaurant.Test
             // ALORS une exception est lancée
             Assert.Throws<InvalidOperationException>(Act);
         }
-        
+
+        [Fact(DisplayName = "ÉTANT DONNE une table dans un restaurant ayant débuté son service" +
+                            "QUAND un client est affecté à une table" +
+                            "ALORS cette table n'est plus sur la liste des tables libres du restaurant")]
+
+        public void TableOccupée()
+        {
+            //ÉTANT DONNE une table dans un restaurant ayant débuté son service
+            Table table = new Table();
+            Restaurant leRestaurant = new Restaurant();
+            leRestaurant.AjouteTable(table); 
+            leRestaurant.DébuterService();
+
+            //QUAND un client est affecté à une table
+            table.InstallerClient();
+
+            //ALORS cette table n'est plus sur la liste des tables libres du restaurant
+            Assert.DoesNotContain(table, leRestaurant.tables.Where(t => !t.EstOccupée));
+        }
 
 
 
 
 
 
-        
 
-        //ÉTANT DONNE une table dans un restaurant ayant débuté son service
-        //QUAND un client est affecté à une table
-        //ALORS cette table n'est plus sur la liste des tables libres du restaurant
 
-	    //ÉTANT DONNE une table occupée par un client
+        //ÉTANT DONNE une table occupée par un client
         //QUAND la table est libérée
         //ALORS cette table appraît sur la liste des tables libres du restaurant
     }

@@ -18,7 +18,6 @@ namespace LeGrandRestaurant
         public void DébuterService()
         {
             this.maitreHotel.tables = this.tables;
-            this.tables = new List<Table>();
         }
 
 
