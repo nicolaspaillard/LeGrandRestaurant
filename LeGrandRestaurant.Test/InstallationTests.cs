@@ -78,6 +78,9 @@ namespace LeGrandRestaurant.Test
             Assert.DoesNotContain(table, leRestaurant.tables.Where(t => !t.EstOccupée));
         }
 
+        [Fact(DisplayName = "ÉTANT DONNE une table occupée par un client" +
+                            "QUAND la table est libérée" +
+                            "ALORS cette table appraît sur la liste des tables libres du restaurant")]
         public void TableLibérée()
         {
             //ÉTANT DONNE une table occupée par un client
