@@ -78,15 +78,19 @@ namespace LeGrandRestaurant.Test
             Assert.DoesNotContain(table, leRestaurant.tables.Where(t => !t.EstOccupée));
         }
 
+        public void TableLibérée()
+        {
+            //ÉTANT DONNE une table occupée par un client
+            Table table = new Table();
+            Restaurant restaurant = new Restaurant();
+            restaurant.AjouteTable(table);
+            table.InstallerClient();
 
+            //QUAND la table est libérée
+            table.Libérer();
 
-
-
-
-
-
-        //ÉTANT DONNE une table occupée par un client
-        //QUAND la table est libérée
-        //ALORS cette table appraît sur la liste des tables libres du restaurant
+            //ALORS cette table appraît sur la liste des tables libres du restaurant
+            Assert.Contains(table, restaurant.tables.Where(t => !t.EstOccupée));
+        }
     }
 }
